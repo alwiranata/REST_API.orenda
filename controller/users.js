@@ -51,14 +51,15 @@ const updateUsers = async (req, res) => {
   }
 };
 
-const deleteUsers = (req, res) => {
+const deleteUsers =async (req, res) => {
   const { idUser } = req.params;
   const { body } = req;
   try {
+    await userModel.deleteUsers(body,idUser)
     res.json({
-      message: "delete user success",
-      data: idUser,
-      ...body,
+      message: "Delete user success",
+      data: null,
+      
     });
   } catch (error) {
     res.status(500).json({

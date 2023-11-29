@@ -16,7 +16,7 @@ const updateUsers = (body, idUser) => {
 };
 
 const deleteUsers = (body, idUser) => {
-  const SQLQuery = `DELETE users SET  name='${body.name}' , email='${body.email} ', address='${body.address}' WHERE idusers='${idUser}'`;
+  const SQLQuery = `DELETE FROM users WHERE idusers='${idUser}'`;
   return dbPool.execute(SQLQuery);
 };
 
