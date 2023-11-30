@@ -17,9 +17,17 @@ const getAllUsers = async (req, res) => {
 
 const createNewUser = async (req, res) => {
   const { body } = req;
+  if(!body.email || !body.name || ! body.address){
+    return res.status(400).json({
+      message : "Your Request Wrong",
+      data : null,
+    })
+    
+  }
+
   try {
     await userModel.createNewUser(body);
-    res.json({
+    res.status(201).json({
       message: "Create new users success",
       data: req.body,
     });
